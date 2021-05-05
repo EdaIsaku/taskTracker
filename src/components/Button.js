@@ -1,9 +1,20 @@
-const Button = () => {
+import { PropTypes } from "prop-types";
+const Button = ({ text, color }) => {
   return (
-    <div>
-      <button className="btn">Add</button>
-    </div>
+    <button style={{ backgroundColor: color }} className="btn">
+      {text}
+    </button>
   );
+};
+
+Button.defaultProps = {
+  text: "Add",
+  color: "red",
+};
+
+Button.propTypes = {
+  text: PropTypes.string.isRequired,
+  color: PropTypes.string.isRequired,
 };
 
 export default Button;
