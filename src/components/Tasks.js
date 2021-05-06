@@ -3,7 +3,7 @@ const Tasks = ({ tasks }) => {
   return (
     <>
       {tasks.map((task) => (
-        <Task key={Math.random()} task={task} />
+        <Task key={task.id} task={task} />
       ))}
     </>
   );
