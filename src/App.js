@@ -9,10 +9,15 @@ function App() {
     { id: 2, text: "second", day: "1/05/2021" },
     { id: 3, text: "third", day: "1/05/2021" },
   ]);
+
+  //Delete task
+  const onDelete = (id) => {
+    setTasks(tasks.filter((task) => task.id !== id));
+  };
   return (
     <div className="container">
       <Header />
-      <Tasks tasks={tasks} />
+      <Tasks tasks={tasks} onDelete={onDelete} />
     </div>
   );
 }
