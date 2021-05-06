@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./App.css";
+import AddTask from "./components/AddTask";
 import Header from "./components/Header";
 import Tasks from "./components/Tasks";
 
@@ -17,12 +18,17 @@ function App() {
 
   //Add reminder
   const onDoubleClick = (id) => {
-   setTasks(tasks.map((task) => task.id === id ? { ...task, remainder: !task.remainder } : task))
-  }
+    setTasks(
+      tasks.map((task) =>
+        task.id === id ? { ...task, remainder: !task.remainder } : task
+      )
+    );
+  };
 
   return (
     <div className="container">
       <Header />
+      <AddTask />
       <Tasks tasks={tasks} onDelete={onDelete} onDoubleClick={onDoubleClick} />
     </div>
   );
