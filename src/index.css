@@ -20,7 +20,7 @@ body {
   border-radius: 5px;
 }
 
-.header {
+header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -61,7 +61,7 @@ body {
   cursor: pointer;
 }
 
-.task.reminder {
+.task.remainder {
   border-left: 5px solid green;
 }
 

@@ -1,13 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Button from "./Button";
+import "../index.css";
 
-export const Header = ({ title }) => {
-
+const Header = ({ title }) => {
   const onClick = () => {
-    console.log('clicked');
-  }
-
+    console.log("clicked");
+  };
   return (
     <header>
       <h1>{title}</h1>
