@@ -5,18 +5,21 @@ import Header from "./components/Header";
 import Tasks from "./components/Tasks";
 
 function App() {
-  const [tasks, setTasks] = useState([
-    { id: 1, text: "first", day: "1/05/2021", remainder: "true" },
-    { id: 2, text: "second", day: "1/05/2021", remainder: "true" },
-    { id: 3, text: "third", day: "1/05/2021", remainder: "true" },
-  ]);
+  const [tasks, setTasks] = useState([]);
+
+  //Add task
+  const addTask = (task) => {
+    const id = Math.floor(Math.random());
+    const newTask = { id, ...task };
+    setTasks([...tasks, newTask]);
+  };
 
   //Delete task
   const onDelete = (id) => {
     setTasks(tasks.filter((task) => task.id !== id));
   };
 
-  //Add reminder
+  //Toggle reminder
   const onDoubleClick = (id) => {
     setTasks(
       tasks.map((task) =>
@@ -28,8 +31,16 @@ function App() {
   return (
     <div className="container">
       <Header />
-      <AddTask />
-      <Tasks tasks={tasks} onDelete={onDelete} onDoubleClick={onDoubleClick} />
+      <AddTask onAdd={addTask} />
+      {tasks.length > 0 ? (
+        <Tasks
+          tasks={tasks}
+          onDelete={onDelete}
+          onDoubleClick={onDoubleClick}
+        />
+      ) : (
+        "No tasks"
+      )}
     </div>
   );
 }

@@ -1,12 +1,22 @@
 import { useState } from "react";
 
-const AddTask = () => {
+const AddTask = ({ onAdd }) => {
   const [text, setText] = useState("");
   const [day, setDay] = useState("");
   const [remainder, setRemainder] = useState(false);
 
+  const onSubmit = (e) => {
+    e.preventDefault();
+    if (text !== "") {
+      onAdd({ text, day, remainder });
+    }
+    //clear state
+    setText("");
+    setDay("");
+    setRemainder(false);
+  };
   return (
-    <form className="add-form">
+    <form className="add-form" onSubmit={onSubmit}>
       <div className="form-control">
         <label for="">Add Task</label>
         <input
